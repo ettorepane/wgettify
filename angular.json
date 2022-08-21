@@ -23,9 +23,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "./node_modules/@forevolve/bootstrap-dark/dist/css/toggle-bootstrap.min.css",
+              "./node_modules/@forevolve/bootstrap-dark/dist/css/toggle-bootstrap-dark.min.css"
+           ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -64,10 +69,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "wgettify:build:production"
+              "browserTarget": "wgettify:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "wgettify:build:development"
+              "browserTarget": "wgettify:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,11 @@
+.topright{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+main {
+  margin-top: 30px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
