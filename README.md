@@ -1,4 +1,9 @@
-# Wgettify [![Build Status](https://app.travis-ci.com/ettorepane/wgettify.svg?branch=master)](https://app.travis-ci.com/ettorepane/wgettify)
+# Wgettify 
+[![Build Status](https://app.travis-ci.com/ettorepane/wgettify.svg?branch=master)](https://app.travis-ci.com/ettorepane/wgettify) 
+![GitHub issues](https://img.shields.io/github/issues-raw/ettorepane/wgettify) 
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m792521624-f772dbc2e8aeccff2c947084) 
+![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m792521624-f772dbc2e8aeccff2c947084)
+![GitHub](https://img.shields.io/github/license/ettorepane/wgettify)
 
 Project live on [wgettify.ovh](https://www.wgettify.ovh)
 
