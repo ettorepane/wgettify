@@ -1,0 +1,73 @@
+<!-- centered div-->
+<div *ngIf="responseUrl==''" class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">File Upload</h3>
+        </div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <input type="file" (change)="onFileChange($event)" id="file-upload" name="file-upload" class="form-control-file">
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-primary" (click)="upload()">Upload</button>
+            </div>
+            <div *ngIf="loading==true"  class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <h6>powered by tmpfiles.org</h6>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="responseUrl!=''">
+  <div class="d-flex justify-content-center">
+    <h3>File uploaded successfully ✅</h3>
+  </div>
+  <div class="d-flex justify-content-center">
+    <h4>You have 1 hour left before the link expires!</h4>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-secondary" (click)="reset()">New file</button>
+  </div>
+  <form autocomplete="off" action="">
+    <div class="form-check">
+      <input (input)="onSudoChange($event)" type="checkbox" class="form-check-input" id="sudo">
+      <label class="form-check-label" for="sudo">Sudo?</label>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="wgetoutput">Wgettable link</label>
+          <textarea (click)="copyWgetClipboard()" placement="top"
+          ngbPopover="Copied!" type="text" readonly placeholder="Please enter a url..." class="rounded-0 form-control" id="wgetoutput" rows="3">{{wgetoutput}}</textarea>
+          <span class="icon-user">
+            <button (click)="copyWgetClipboard()" type="button" class="btn btn-outline-secondary me-2 bi bi-clipboard" placement="top"
+              ngbPopover="Copied!" >
+              Copy
+            </button>
+          </span>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="curloutput">Curlable link</label>
+          <textarea (click)="copyCurlClipboard()" placement="top"
+          ngbPopover="Copied!" type="text" readonly placeholder="Please enter a url..." class="form-control" id="curloutput" rows="3">{{curloutput}}</textarea>
+          <span class="icon-user">
+            <button (click)="copyCurlClipboard()" type="button" class="btn btn-outline-secondary me-2 bi bi-clipboard" placement="top"
+              ngbPopover="Copied!" >
+              Copy
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

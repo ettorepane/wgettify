@@ -1,0 +1,7 @@
+{
+  "/api/upload/*": {
+      "target": "http://tempfile.site/api/files",
+      "secure": false,
+      "logLevel": "debug"
+  }
+}

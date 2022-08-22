@@ -1,0 +1,39 @@
+  <div class="form-group">
+    <label for="urlinput">Enter your url to make it wgettable</label>
+    <input autocomplete="off" (input)="onUrlChange($event)" (change)="onUrlOutOfFocus()" type="text" class="form-control" id="urlinput" aria-describedby="emailHelp" placeholder="https://example.com/fileToDownload">
+    <small id="emailHelp" class="form-text text-muted">All URLs are processed locally. Nothing is sended to the server. Please be aware of the risk involved if you don't trust the download source.</small>
+  </div>
+  <div class="form-check">
+    <input (input)="onSudoChange($event)" type="checkbox" class="form-check-input" id="sudo">
+    <label class="form-check-label" for="sudo">Sudo?</label>
+  </div>
+  <hr class="solid bg-primary">
+  <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="wgetoutput">Wgettable link</label>
+        <textarea (click)="copyWgetClipboard()" placement="top"
+        ngbPopover="Copied!" type="text" readonly placeholder="Please enter a url..." class="rounded-0 form-control" id="wgetoutput" rows="3">{{wgetoutput}}</textarea>
+        <span class="icon-user">
+          <button (click)="copyWgetClipboard()" type="button" class="btn btn-outline-secondary me-2 bi bi-clipboard" placement="top"
+            ngbPopover="Copied!" >
+            Copy
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="curloutput">Curlable link</label>
+        <textarea (click)="copyCurlClipboard()" placement="top"
+        ngbPopover="Copied!" type="text" readonly placeholder="Please enter a url..." class="form-control" id="curloutput" rows="3">{{curloutput}}</textarea>
+        <span class="icon-user">
+          <button (click)="copyCurlClipboard()" type="button" class="btn btn-outline-secondary me-2 bi bi-clipboard" placement="top"
+            ngbPopover="Copied!" >
+            Copy
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+
