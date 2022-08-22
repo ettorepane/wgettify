@@ -1,19 +1,12 @@
-dist: trusty
-sudo: false
-
 language: node_js
 node_js:
-  - '16'
-
-addons:
-  chrome: stable
-
-cache:
-  directories:
-    - ./node_modules
-
-install:
-  - npm install
-
+  - "16"
+dist: trusty
+sudo: required
+branches:
+  only:
+  - master
+before_script:
+  - npm install -g @angular/cli
 script:
-  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+- ng build
