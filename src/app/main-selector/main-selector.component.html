@@ -1,21 +1,18 @@
 <div class="container">
   <div style="min-height: 2rem;"></div>
-  <div class="d-flex justify-content-center">
-    <nav aria-label="...">
-      <ul class="pagination pagination-lg">
-        <li class="page-item disabled" *ngIf="fileMode==false">
-          <a class="page-link" tabindex="-1">URL</a>
-        </li>
-        <li class="page-item" (click)="switchMode()"><a class="page-link" href="#" *ngIf="fileMode==true">URL</a></li>
-        <li class="page-item disabled" *ngIf="fileMode==true">
-          <a class="page-link" tabindex="-1" >File</a>
-        </li>
-        <li class="page-item" (click)="switchMode()"><a class="page-link" href="#" *ngIf="fileMode==false">File</a></li>
-      </ul>
-    </nav>
+  <div class="">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a (click)="switchMode('url')" class="nav-link active" id="url-tab" data-toggle="tab" href="#url" role="tab" aria-controls="url" aria-selected="true">URL</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="switchMode('file')" class="nav-link" id="file-tab" data-toggle="tab" href="#file" role="tab" aria-controls="file" aria-selected="false">File</a>
+      </li>
+    </ul>
   </div>
 </div>
+<div style="min-height: 1rem;"></div>
 <div class="container">
-  <app-main-calculus *ngIf="fileMode==false"></app-main-calculus>
-  <app-file-upload *ngIf="fileMode==true"></app-file-upload>
+  <app-main-calculus *ngIf="mode=='url'"></app-main-calculus>
+  <app-file-upload *ngIf="mode=='file'"></app-file-upload>
   </div>

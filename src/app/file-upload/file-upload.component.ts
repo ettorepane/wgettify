@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms'
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-file-upload',
@@ -17,6 +18,7 @@ export class FileUploadComponent{
   wgetoutput = "";
   curloutput = "";
   sudo = false;
+  errorMessage = '';
 
 
   onFileChange(event: any) {
@@ -44,17 +46,34 @@ export class FileUploadComponent{
       const formData = new FormData();
       formData.append('file', this.file);
       this.loading = true;
-      this.http.post('https://tmpfiles.org/api/v1/upload', formData).subscribe(res => {
-        console.log(res);
+      this.http.post('https://tmpfiles.org/api/v1/upload', formData).subscribe(data => {
+        console.log(data);
         //convert response to json
-        this.responseUrl = JSON.parse(JSON.stringify(res)).data.url;
+        this.responseUrl = JSON.parse(JSON.stringify(data)).data.url;
         this.responseUrl = this.responseUrl.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
         this.loading = false;
         this.calc();
         //alert("File uploaded successfully: "+this.responseUrl);
+      },
+      error => {
+        console.log("Looks like an error as occured, please send the informations below on a github issue:");
+        console.log(error);
+        this.loading=false;
+        this.errorMessage=error['message'];
+        switch(error['status']){
+          case 500:
+            this.errorMessage="We probably don't like your filename, please, change it. ERROR 500"
+        }
       }
       );
     }
+  }
+
+  
+  tmpbutton(){
+    var url = this.responseUrl.replace('tmpfiles.org/dl/','tmpfiles.org/')
+    // @ts-ignore: Object is possibly 'null'.
+    window.open(url, '_blank').focus();
   }
 
   onSudoChange(event: any) {
@@ -73,6 +92,7 @@ export class FileUploadComponent{
     this.responseUrl = "";
     this.wgetoutput = "";
     this.curloutput = "";
+    this.errorMessage= "";
   }
 
 

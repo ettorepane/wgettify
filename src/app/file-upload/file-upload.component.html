@@ -1,9 +1,14 @@
 <!-- centered div-->
-<div *ngIf="responseUrl==''" class="container">
-  <div class="row">
+
+<div *ngIf="responseUrl=='' && loading==false && errorMessage==''" class=" container">
+  <div class="alert alert-warning" role="alert">
+    Warning: Some user reported that file upload doesn't want to work due to extensions blocking our APIs. We are troubleshooting the errors.
+  </div>
+  <div class="row d-flex justify-content-center" >
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-default">
         <div class="panel-heading">
+          
           <h3 class="panel-title">File Upload</h3>
         </div>
         <div class="panel-body">
@@ -14,14 +19,31 @@
             <div class="form-group">
               <button type="button" class="btn btn-primary" (click)="upload()">Upload</button>
             </div>
-            <div *ngIf="loading==true"  class="spinner-grow text-success" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
             <h6>powered by tmpfiles.org</h6>
           </form>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div *ngIf="loading==true" class="d-flex justify-content-center">
+  <div class="spinner-grow text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="errorMessage!=''" class="">
+  <div class="d-flex justify-content-center">
+    <h3>An error as occured while uploading the file ❌🐛</h3>
+  </div>
+  <div class="d-flex justify-content-center">
+    <h4>{{errorMessage}}</h4>
+  </div>
+  <div class="d-flex justify-content-center">
+    <h6>If you think this is our fault, please report this error, alongside the console log on github</h6>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-secondary" (click)="reset()">Try again</button>
   </div>
 </div>
 
@@ -69,5 +91,8 @@
       </div>
     </div>
   </form>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" (click)="tmpbutton()">I just want the tmp download link</button>
+  </div>
 </div>
 

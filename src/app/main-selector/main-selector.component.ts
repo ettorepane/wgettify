@@ -7,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainSelectorComponent implements OnInit {
 
-  fileMode=false;
+
+  //TODO: change filemode to int :-)
+  mode = 'url';
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  switchMode(){
-    this.fileMode=!this.fileMode;
+  switchMode(newMode: any){
+    document.getElementById(this.mode+"-tab")?.classList.remove("active");
+    this.mode=newMode;
+    document.getElementById(this.mode+"-tab")?.classList.add("active");
   }
 
 }
