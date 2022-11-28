@@ -33,7 +33,7 @@ So that if a service is down, or breached, another one can immediately kick in.
 # Build your own!
 
 Feel free to take the code and modify it as you wish, based on the MIT license.
-If you want to help me and submit a pull request feel free to do it!
+If you want to help me then do a PR!
 Here's a guide on how to deploy a dev server.
 
 ## Development server
